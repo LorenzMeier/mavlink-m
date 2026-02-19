@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+<mavlink>
+  <dialect>0</dialect>
+  <version>1</version>
+  <include>common.xml</include>
+
+  <enums>
+
+    <enum name="MAVLINK_M_TARGET_CLASS">
+      <description>Classification of a ground target.</description>
+      <entry value="1"  name="MAVLINK_M_TARGET_CLASS_MBT_1">  <description>Main battle tank type 1.</description></entry>
+      <entry value="2"  name="MAVLINK_M_TARGET_CLASS_MBT_2">  <description>Main battle tank type 2.</description></entry>
+      <entry value="3"  name="MAVLINK_M_TARGET_CLASS_MBT_3">  <description>Main battle tank type 3.</description></entry>
+      <entry value="4"  name="MAVLINK_M_TARGET_CLASS_MBT_4">  <description>Main battle tank type 4.</description></entry>
+      <entry value="5"  name="MAVLINK_M_TARGET_CLASS_MBT_5">  <description>Main battle tank type 5.</description></entry>
+      <entry value="6"  name="MAVLINK_M_TARGET_CLASS_MBT_6">  <description>Main battle tank type 6.</description></entry>
+      <entry value="7"  name="MAVLINK_M_TARGET_CLASS_MBT_7">  <description>Main battle tank type 7.</description></entry>
+      <entry value="8"  name="MAVLINK_M_TARGET_CLASS_MBT_8">  <description>Main battle tank type 8.</description></entry>
+      <entry value="9"  name="MAVLINK_M_TARGET_CLASS_MBT_9">  <description>Main battle tank type 9.</description></entry>
+      <entry value="10" name="MAVLINK_M_TARGET_CLASS_IFV_1">  <description>Infantry fighting vehicle type 1.</description></entry>
+      <entry value="11" name="MAVLINK_M_TARGET_CLASS_IFV_2">  <description>Infantry fighting vehicle type 2.</description></entry>
+      <entry value="12" name="MAVLINK_M_TARGET_CLASS_IFV_3">  <description>Infantry fighting vehicle type 3.</description></entry>
+      <entry value="13" name="MAVLINK_M_TARGET_CLASS_IFV_4">  <description>Infantry fighting vehicle type 4.</description></entry>
+      <entry value="14" name="MAVLINK_M_TARGET_CLASS_IFV_5">  <description>Infantry fighting vehicle type 5.</description></entry>
+      <entry value="15" name="MAVLINK_M_TARGET_CLASS_IFV_6">  <description>Infantry fighting vehicle type 6.</description></entry>
+      <entry value="16" name="MAVLINK_M_TARGET_CLASS_IFV_7">  <description>Infantry fighting vehicle type 7.</description></entry>
+      <entry value="17" name="MAVLINK_M_TARGET_CLASS_IFV_8">  <description>Infantry fighting vehicle type 8.</description></entry>
+      <entry value="18" name="MAVLINK_M_TARGET_CLASS_IFV_9">  <description>Infantry fighting vehicle type 9.</description></entry>
+      <entry value="190" name="MAVLINK_M_TARGET_CLASS_ROAD"> <description>Road or linear infrastructure.</description></entry>
+      <entry value="200" name="MAVLINK_M_TARGET_CLASS_STRUCTURE"><description>Structure or building.</description></entry>
+    </enum>
+
+    <enum name="MAVLINK_M_TARGET_FORCE">
+      <description>Force affiliation of a target.</description>
+      <entry value="0"   name="MAVLINK_M_TARGET_FORCE_UNKNOWN">      <description>Force affiliation unknown.</description></entry>
+      <entry value="10"  name="MAVLINK_M_TARGET_FORCE_NEUTRAL">      <description>Neutral force.</description></entry>
+      <entry value="20"  name="MAVLINK_M_TARGET_FORCE_FRIENDLY">     <description>Friendly force.</description></entry>
+      <entry value="30"  name="MAVLINK_M_TARGET_FORCE_FOE">          <description>Enemy force.</description></entry>
+      <entry value="250" name="MAVLINK_M_TARGET_FORCE_EXTRATERRESTRIAL"><description>Extraterrestrial / non-human origin.</description></entry>
+    </enum>
+
+    <enum name="MAVLINK_M_ESAD_ARMING_STATUS">
+      <description>ESAD arming state.</description>
+      <entry value="0" name="MAVLINK_M_ESAD_ARMING_DISARMED">  <description>System is disarmed.</description></entry>
+      <entry value="1" name="MAVLINK_M_ESAD_ARMING_ARMED">     <description>System is armed.</description></entry>
+      <entry value="2" name="MAVLINK_M_ESAD_ARMING_FAULT">     <description>Arming fault detected.</description></entry>
+    </enum>
+
+    <enum name="MAVLINK_M_ESAD_MUNITION_STATUS">
+      <description>ESAD munition readiness state.</description>
+      <entry value="0" name="MAVLINK_M_ESAD_MUNITION_NOT_PRESENT"><description>No munition present.</description></entry>
+      <entry value="1" name="MAVLINK_M_ESAD_MUNITION_PRESENT">    <description>Munition present and not ready.</description></entry>
+      <entry value="2" name="MAVLINK_M_ESAD_MUNITION_READY">      <description>Munition present and ready.</description></entry>
+      <entry value="3" name="MAVLINK_M_ESAD_MUNITION_FAULT">      <description>Munition fault detected.</description></entry>
+    </enum>
+
+    <enum name="MAVLINK_M_ESAD_IGNITION_STATUS">
+      <description>ESAD ignition circuit state.</description>
+      <entry value="0" name="MAVLINK_M_ESAD_IGNITION_OPEN">    <description>Ignition circuit open.</description></entry>
+      <entry value="1" name="MAVLINK_M_ESAD_IGNITION_CLOSED">  <description>Ignition circuit closed.</description></entry>
+      <entry value="2" name="MAVLINK_M_ESAD_IGNITION_FIRED">   <description>Ignition has fired.</description></entry>
+      <entry value="3" name="MAVLINK_M_ESAD_IGNITION_FAULT">   <description>Ignition circuit fault.</description></entry>
+    </enum>
+
+    <enum name="MAVLINK_M_ESAD_FAULT_FLAGS" bitmask="true">
+      <description>ESAD fault flag bitmask.</description>
+      <entry value="1"  name="MAVLINK_M_ESAD_FAULT_WIRING">           <description>Wiring fault detected.</description></entry>
+      <entry value="2"  name="MAVLINK_M_ESAD_FAULT_POWER_GLITCH">     <description>Power supply glitch detected.</description></entry>
+      <entry value="4"  name="MAVLINK_M_ESAD_FAULT_SIGNAL_INTEGRITY"> <description>Signal integrity fault detected.</description></entry>
+      <entry value="8"  name="MAVLINK_M_ESAD_FAULT_SENSOR_ACC">       <description>Accelerometer sensor failure.</description></entry>
+      <entry value="16" name="MAVLINK_M_ESAD_FAULT_SENSOR_LIDAR">     <description>LIDAR sensor failure.</description></entry>
+    </enum>
+
+    <enum name="MAVLINK_M_ESAD_ARMING_REQUEST">
+      <description>ESAD arming command.</description>
+      <entry value="0" name="MAVLINK_M_ESAD_REQUEST_DISARM"><description>Request disarm.</description></entry>
+      <entry value="1" name="MAVLINK_M_ESAD_REQUEST_ARM">   <description>Request arm.</description></entry>
+    </enum>
+
+    <enum name="MAVLINK_M_RWS_ARMING_STATE">
+      <description>Remote weapon system arming state.</description>
+      <entry value="0" name="MAVLINK_M_RWS_ARMING_SAFE">    <description>Weapon system safe.</description></entry>
+      <entry value="1" name="MAVLINK_M_RWS_ARMING_ARMED">   <description>Weapon system armed.</description></entry>
+      <entry value="2" name="MAVLINK_M_RWS_ARMING_FAULT">   <description>Weapon system fault.</description></entry>
+    </enum>
+
+    <enum name="MAVLINK_M_MATCH_MEDIA_TYPE">
+      <description>Media type used for target matching.</description>
+      <entry value="0" name="MAVLINK_M_MATCH_MEDIA_NONE">       <description>No matching media.</description></entry>
+      <entry value="1" name="MAVLINK_M_MATCH_MEDIA_IMAGE">      <description>Still image.</description></entry>
+      <entry value="2" name="MAVLINK_M_MATCH_MEDIA_VIDEO_CLIP"> <description>Video clip.</description></entry>
+      <entry value="3" name="MAVLINK_M_MATCH_MEDIA_IR_IMAGE">   <description>Infrared image.</description></entry>
+      <entry value="4" name="MAVLINK_M_MATCH_MEDIA_SAR_IMAGE">  <description>SAR image.</description></entry>
+    </enum>
+
+  </enums>
+
+  <messages>
+
+    <!-- ============================================================ -->
+    <!-- 60000: TARGET_SET_COORD                                       -->
+    <!-- ============================================================ -->
+    <message id="60000" name="TARGET_SET_COORD">
+      <description>Defines a circular target set area in WGS84. A target set groups one or more individual targets sharing a common operational context.</description>
+      <field type="uint64_t" name="time_usec"     units="us">Timestamp (UNIX epoch, microseconds UTC).</field>
+      <field type="uint32_t" name="target_set_id"             >Unique identifier of the target set.</field>
+      <field type="char[50]" name="target_set_name"           >Human-readable name of the target set (null-terminated).</field>
+      <field type="int32_t"  name="lat"           units="degE7">Centroid latitude, WGS84.</field>
+      <field type="int32_t"  name="lon"           units="degE7">Centroid longitude, WGS84.</field>
+      <field type="float"    name="alt"           units="m"   >Centroid altitude, MSL.</field>
+      <field type="float"    name="radius"        units="m"   >Radius of the circular target set area.</field>
+      <field type="uint64_t" name="time_start"    units="us"  >Area validity start time (UNIX epoch, microseconds UTC). 0 = immediate.</field>
+      <field type="uint64_t" name="time_end"      units="us"  >Area validity end time (UNIX epoch, microseconds UTC). 0 = indefinite.</field>
+    </message>
+
+    <!-- ============================================================ -->
+    <!-- 60001: TARGET_BOX_COORD                                       -->
+    <!-- ============================================================ -->
+    <message id="60001" name="TARGET_BOX_COORD">
+      <description>Defines a polygonal (quadrilateral) target set area using four WGS84 corner coordinates ordered clockwise.</description>
+      <field type="uint64_t" name="time_usec"     units="us"  >Timestamp (UNIX epoch, microseconds UTC).</field>
+      <field type="uint32_t" name="target_set_id"             >Unique identifier of the target set.</field>
+      <field type="char[50]" name="target_set_name"           >Human-readable name of the target set (null-terminated).</field>
+      <field type="int32_t"  name="lat[4]"        units="degE7">Corner latitudes, WGS84, clockwise order.</field>
+      <field type="int32_t"  name="lon[4]"        units="degE7">Corner longitudes, WGS84, clockwise order.</field>
+      <field type="float"    name="alt[4]"        units="m"   >Corner altitudes, MSL.</field>
+      <field type="uint64_t" name="time_start"    units="us"  >Area validity start time (UNIX epoch, microseconds UTC). 0 = immediate.</field>
+      <field type="uint64_t" name="time_end"      units="us"  >Area validity end time (UNIX epoch, microseconds UTC). 0 = indefinite.</field>
+    </message>
+
+    <!-- ============================================================ -->
+    <!-- 60002: TARGET_COORD                                           -->
+    <!-- ============================================================ -->
+    <message id="60002" name="TARGET_COORD">
+      <description>Position, velocity, and engagement parameters for an individual target within a target set.</description>
+      <field type="uint64_t" name="time_usec"     units="us"  >Timestamp (UNIX epoch, microseconds UTC).</field>
+      <field type="uint32_t" name="target_set_id"             >Parent target set identifier.</field>
+      <field type="char[50]" name="target_name"               >Human-readable target name (null-terminated).</field>
+      <field type="int32_t"  name="lat"           units="degE7">Target latitude, WGS84.</field>
+      <field type="int32_t"  name="lon"           units="degE7">Target longitude, WGS84.</field>
+      <field type="float"    name="alt"           units="m"   >Target altitude, MSL.</field>
+      <field type="float"    name="vx"            units="m/s" >Velocity north component (NED).</field>
+      <field type="float"    name="vy"            units="m/s" >Velocity east component (NED).</field>
+      <field type="float"    name="vz"            units="m/s" >Velocity down component (NED).</field>
+      <field type="float"    name="cov_pos_x"     units="m^2" >Position covariance, north axis.</field>
+      <field type="float"    name="cov_pos_y"     units="m^2" >Position covariance, east axis.</field>
+      <field type="float"    name="cov_pos_z"     units="m^2" >Position covariance, down axis.</field>
+      <field type="float"    name="cov_vel_x"     units="m^2/s^2">Velocity covariance, north axis.</field>
+      <field type="float"    name="cov_vel_y"     units="m^2/s^2">Velocity covariance, east axis.</field>
+      <field type="float"    name="cov_vel_z"     units="m^2/s^2">Velocity covariance, down axis.</field>
+      <field type="float"    name="cep_desired"   units="m"   >Desired circular error probable.</field>
+      <field type="float"    name="cep_max"       units="m"   >Maximum acceptable circular error probable.</field>
+      <field type="uint8_t"  name="target_class"  enum="MAVLINK_M_TARGET_CLASS">Target classification.</field>
+      <field type="uint8_t"  name="target_force"  enum="MAVLINK_M_TARGET_FORCE">Force affiliation.</field>
+    </message>
+
+    <!-- ============================================================ -->
+    <!-- 60003: FIRES                                                  -->
+    <!-- ============================================================ -->
+    <message id="60003" name="FIRES">
+      <description>Fire mission order. Commands an effector to engage a WGS84 coordinate with a specified expected impact time and CEP.</description>
+      <field type="uint64_t" name="time_usec"         units="us"  >Timestamp (UNIX epoch, microseconds UTC).</field>
+      <field type="uint64_t" name="time_impact_usec"  units="us"  >Expected time of impact (UNIX epoch, microseconds UTC).</field>
+      <field type="int32_t"  name="lat"               units="degE7">Target latitude, WGS84.</field>
+      <field type="int32_t"  name="lon"               units="degE7">Target longitude, WGS84.</field>
+      <field type="float"    name="alt"               units="m"   >Target altitude, MSL.</field>
+      <field type="uint32_t" name="effector_id"                   >Identifier of the assigned effector.</field>
+      <field type="uint16_t" name="sequence"                      >Fire mission sequence number.</field>
+      <field type="float"    name="cep_expected"       units="m"  >Expected circular error probable at impact.</field>
+    </message>
+
+    <!-- ============================================================ -->
+    <!-- 60004: SPLASH_CORRECTION                                      -->
+    <!-- ============================================================ -->
+    <message id="60004" name="SPLASH_CORRECTION">
+      <description>Post-impact splash observation used to correct fire mission accuracy.</description>
+      <field type="uint64_t" name="time_usec"     units="us"  >Timestamp of observation (UNIX epoch, microseconds UTC).</field>
+      <field type="int32_t"  name="lat"           units="degE7">Observed splash latitude, WGS84.</field>
+      <field type="int32_t"  name="lon"           units="degE7">Observed splash longitude, WGS84.</field>
+      <field type="float"    name="alt"           units="m"   >Observed splash altitude, MSL.</field>
+      <field type="uint16_t" name="sequence"                  >Fire mission sequence number this correction applies to.</field>
+      <field type="uint8_t"  name="type_detected"             >Type of splash detected (implementation-defined; e.g. 0=unknown, 1=smoke, 2=explosion).</field>
+      <field type="float"    name="cep_expected"  units="m"   >Estimated CEP of the observed splash.</field>
+    </message>
+
+    <!-- ============================================================ -->
+    <!-- 60005: TARGET_HANDOVER                                        -->
+    <!-- ============================================================ -->
+    <message id="60005" name="TARGET_HANDOVER">
+      <description>Transfers tracking responsibility for a target to another system, including kinematic state, classification, identification media, and authorization.</description>
+      <field type="uint64_t"  name="time_usec"         units="us"  >Timestamp (UNIX epoch, microseconds UTC).</field>
+      <field type="uint64_t"  name="detected_first_usec" units="us">Time target was first detected (UNIX epoch, microseconds UTC).</field>
+      <field type="uint64_t"  name="valid_until_usec"  units="us"  >Handover data validity expiry (UNIX epoch, microseconds UTC).</field>
+      <field type="int32_t"   name="lat"               units="degE7">Target latitude, WGS84.</field>
+      <field type="int32_t"   name="lon"               units="degE7">Target longitude, WGS84.</field>
+      <field type="float"     name="alt"               units="m"   >Target altitude, MSL.</field>
+      <field type="float"     name="vx"                units="m/s" >Velocity north component (NED).</field>
+      <field type="float"     name="vy"                units="m/s" >Velocity east component (NED).</field>
+      <field type="float"     name="vz"                units="m/s" >Velocity down component (NED).</field>
+      <field type="float"     name="cov_pos_x"         units="m^2" >Position covariance, north axis.</field>
+      <field type="float"     name="cov_pos_y"         units="m^2" >Position covariance, east axis.</field>
+      <field type="float"     name="cov_pos_z"         units="m^2" >Position covariance, down axis.</field>
+      <field type="float"     name="cov_vel_x"         units="m^2/s^2">Velocity covariance, north axis.</field>
+      <field type="float"     name="cov_vel_y"         units="m^2/s^2">Velocity covariance, east axis.</field>
+      <field type="float"     name="cov_vel_z"         units="m^2/s^2">Velocity covariance, down axis.</field>
+      <field type="uint32_t"  name="target_set_id"                 >Parent target set identifier.</field>
+      <field type="char[50]"  name="target_name"                   >Human-readable target name (null-terminated).</field>
+      <field type="char[50]"  name="match_media_url"               >Short URL referencing matching media asset (null-terminated).</field>
+      <field type="float"     name="confidence_score"              >Confidence score of identification [0.0-1.0].</field>
+      <field type="uint8_t[8]" name="authorization"                >Opaque authorization token.</field>
+      <field type="uint8_t"   name="target_class"     enum="MAVLINK_M_TARGET_CLASS">Target classification.</field>
+      <field type="uint8_t"   name="target_force"     enum="MAVLINK_M_TARGET_FORCE">Force affiliation.</field>
+      <field type="uint8_t"   name="match_media_type" enum="MAVLINK_M_MATCH_MEDIA_TYPE">Type of matching media referenced by match_media_url.</field>
+    </message>
+
+    <!-- ============================================================ -->
+    <!-- 60006: BATTLE_DAMAGE_ASSESSMENT                               -->
+    <!-- ============================================================ -->
+    <message id="60006" name="BATTLE_DAMAGE_ASSESSMENT">
+      <description>Reports the assessed destruction level and confidence for an engaged target following a fire mission.</description>
+      <field type="uint64_t"  name="time_usec"         units="us"  >Timestamp (UNIX epoch, microseconds UTC).</field>
+      <field type="int32_t"   name="lat"               units="degE7">Assessed target latitude, WGS84.</field>
+      <field type="int32_t"   name="lon"               units="degE7">Assessed target longitude, WGS84.</field>
+      <field type="float"     name="alt"               units="m"   >Assessed target altitude, MSL.</field>
+      <field type="float"     name="vx"                units="m/s" >Velocity north component (NED). 0 if target is static.</field>
+      <field type="float"     name="vy"                units="m/s" >Velocity east component (NED). 0 if target is static.</field>
+      <field type="float"     name="vz"                units="m/s" >Velocity down component (NED). 0 if target is static.</field>
+      <field type="float"     name="cov_pos_x"         units="m^2" >Position covariance, north axis.</field>
+      <field type="float"     name="cov_pos_y"         units="m^2" >Position covariance, east axis.</field>
+      <field type="float"     name="cov_pos_z"         units="m^2" >Position covariance, down axis.</field>
+      <field type="float"     name="cov_vel_x"         units="m^2/s^2">Velocity covariance, north axis.</field>
+      <field type="float"     name="cov_vel_y"         units="m^2/s^2">Velocity covariance, east axis.</field>
+      <field type="float"     name="cov_vel_z"         units="m^2/s^2">Velocity covariance, down axis.</field>
+      <field type="uint32_t"  name="target_set_id"                 >Parent target set identifier.</field>
+      <field type="char[50]"  name="target_name"                   >Human-readable target name (null-terminated).</field>
+      <field type="uint8_t[8]" name="authorization"                >Opaque authorization token.</field>
+      <field type="uint8_t"   name="destruction_pct"  units="%"   >Assessed target destruction level [0-100].</field>
+      <field type="uint8_t"   name="confidence_pct"   units="%"   >Confidence of assessment [0-100].</field>
+      <field type="uint8_t"   name="target_class"     enum="MAVLINK_M_TARGET_CLASS">Target classification.</field>
+      <field type="uint8_t"   name="target_force"     enum="MAVLINK_M_TARGET_FORCE">Force affiliation.</field>
+    </message>
+
+    <!-- ============================================================ -->
+    <!-- 60007: ESAD_STATE                                             -->
+    <!-- ============================================================ -->
+    <message id="60007" name="ESAD_STATE">
+      <description>Electronic Safe and Arm Device (ESAD) telemetry. Reports current arming, munition, and ignition states along with fault flags and software identity.</description>
+      <field type="uint64_t"  name="time_usec"         units="us"  >Timestamp (UNIX epoch, microseconds UTC).</field>
+      <field type="uint32_t"  name="arming_challenge_hash"         >Challenge hash for arming authentication.</field>
+      <field type="uint32_t"  name="fault_flags"       enum="MAVLINK_M_ESAD_FAULT_FLAGS">Active fault flag bitmask.</field>
+      <field type="float"     name="input_1"                       >Analog/digital input 1 (implementation-defined).</field>
+      <field type="float"     name="input_2"                       >Analog/digital input 2 (implementation-defined).</field>
+      <field type="uint8_t[8]" name="sw_version_hash"              >Software version as 8-byte short Git hash.</field>
+      <field type="uint8_t"   name="arming_status"    enum="MAVLINK_M_ESAD_ARMING_STATUS">Current arming state.</field>
+      <field type="uint8_t"   name="munition_status"  enum="MAVLINK_M_ESAD_MUNITION_STATUS">Current munition state.</field>
+      <field type="uint8_t"   name="ignition_status"  enum="MAVLINK_M_ESAD_IGNITION_STATUS">Current ignition circuit state.</field>
+      <field type="uint8_t"   name="munition_type"                 >Munition type identifier (implementation-defined).</field>
+    </message>
+
+    <!-- ============================================================ -->
+    <!-- 60008: ESAD_ARMING                                            -->
+    <!-- ============================================================ -->
+    <message id="60008" name="ESAD_ARMING">
+      <description>ESAD arming command. The arming_challenge_hash must match the value last broadcast in ESAD_STATE before the request is accepted.</description>
+      <field type="uint64_t" name="time_usec"            units="us">Timestamp (UNIX epoch, microseconds UTC).</field>
+      <field type="uint32_t" name="arming_challenge_hash"          >Challenge hash matching the active ESAD_STATE hash.</field>
+      <field type="uint8_t"  name="arming_request"  enum="MAVLINK_M_ESAD_ARMING_REQUEST">Requested arming state change.</field>
+    </message>
+
+    <!-- ============================================================ -->
+    <!-- 60009: RWS_POSE                                               -->
+    <!-- ============================================================ -->
+    <message id="60009" name="RWS_POSE">
+      <description>Remote Weapon System (RWS) pose relative to the host vehicle. Describes the physical mounting offset and orientation of the weapon system, plus its absolute position and velocity if available.</description>
+      <field type="uint64_t" name="time_usec"     units="us"   >Timestamp (UNIX epoch, microseconds UTC).</field>
+      <field type="int32_t"  name="lat"           units="degE7">RWS latitude, WGS84. INT32_MAX if unknown.</field>
+      <field type="int32_t"  name="lon"           units="degE7">RWS longitude, WGS84. INT32_MAX if unknown.</field>
+      <field type="float"    name="alt"           units="m"    >RWS altitude, MSL. NaN if unknown.</field>
+      <field type="float"    name="vx"            units="m/s"  >Velocity north component (NED). NaN if unknown.</field>
+      <field type="float"    name="vy"            units="m/s"  >Velocity east component (NED). NaN if unknown.</field>
+      <field type="float"    name="vz"            units="m/s"  >Velocity down component (NED). NaN if unknown.</field>
+      <field type="float"    name="cov_pos_x"     units="m^2"  >Position covariance, north axis. NaN if unknown.</field>
+      <field type="float"    name="cov_pos_y"     units="m^2"  >Position covariance, east axis. NaN if unknown.</field>
+      <field type="float"    name="cov_pos_z"     units="m^2"  >Position covariance, down axis. NaN if unknown.</field>
+      <field type="float"    name="cov_vel_x"     units="m^2/s^2">Velocity covariance, north axis. NaN if unknown.</field>
+      <field type="float"    name="cov_vel_y"     units="m^2/s^2">Velocity covariance, east axis. NaN if unknown.</field>
+      <field type="float"    name="cov_vel_z"     units="m^2/s^2">Velocity covariance, down axis. NaN if unknown.</field>
+      <field type="float"    name="offset_x"      units="m"    >Mounting offset X from vehicle reference point in coordinate_frame.</field>
+      <field type="float"    name="offset_y"      units="m"    >Mounting offset Y from vehicle reference point in coordinate_frame.</field>
+      <field type="float"    name="offset_z"      units="m"    >Mounting offset Z from vehicle reference point in coordinate_frame.</field>
+      <field type="float"    name="q[4]"                       >RWS orientation quaternion [w, x, y, z] relative to coordinate_frame.</field>
+      <field type="float"    name="accuracy_roll" units="rad"  >Roll orientation accuracy (1-sigma).</field>
+      <field type="float"    name="accuracy_pitch" units="rad" >Pitch orientation accuracy (1-sigma).</field>
+      <field type="float"    name="accuracy_yaw"  units="rad"  >Yaw orientation accuracy (1-sigma).</field>
+      <field type="uint8_t"  name="coordinate_frame" enum="MAV_FRAME">Coordinate frame for offset and orientation. See MAV_FRAME.</field>
+    </message>
+
+    <!-- ============================================================ -->
+    <!-- 60010: RWS_STATE                                              -->
+    <!-- ============================================================ -->
+    <message id="60010" name="RWS_STATE">
+      <description>Remote Weapon System (RWS) operational state including arming status and loaded weapon information.</description>
+      <field type="uint64_t"  name="time_usec"     units="us"  >Timestamp (UNIX epoch, microseconds UTC).</field>
+      <field type="char[50]"  name="weapon_string"             >Human-readable weapon description or designation (null-terminated).</field>
+      <field type="uint8_t"   name="arming_state"  enum="MAVLINK_M_RWS_ARMING_STATE">Current arming state of the weapon system.</field>
+      <field type="uint8_t"   name="weapon_type"               >Weapon type identifier (implementation-defined).</field>
+    </message>
+
+  </messages>
+
+</mavlink>
